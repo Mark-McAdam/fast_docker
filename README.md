@@ -23,3 +23,19 @@ also added
 
 $ pip install databases[postgresql] for production/dev db
 $ pip install databases[sqlite] for testing db
+
+So, we started with an Alpine-based Docker image for Python 3.8.1. We then set a working directory along with two environment variables:
+
+PYTHONDONTWRITEBYTECODE: Prevents Python from writing pyc files to disc (equivalent to python -B option)
+PYTHONUNBUFFERED: Prevents Python from buffering stdout and stderr (equivalent to python -u option)
+Finally, we copied over the requirements.txt file, installed some system-level dependencies, updated Pip, installed the requirements, and copied over the FastAPI app itself.
+
+
+
+So, when the container spins up, Uvicorn will run with the following settings:
+
+--reload enables auto-reload so the server will restart after changes are made to the code base.
+--workers 1 provides a single worker process.
+--host 0.0.0.0 defines the address to host the server on.
+--port 8000 defines the port to host the server on.
+app.main:app tells Uvicorn where it can find the FastAPI ASGI application -- e.g., "within the 'app' module, you'll find the ASGI app, app = FastAPI(), in the 'main.py' file.
