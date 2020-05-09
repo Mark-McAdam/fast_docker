@@ -9,3 +9,17 @@ This is exciting puzzle week
 Following along the link at 
 https://testdriven.io/blog/fastapi-crud/
 
+Dependencies:
+
+FastAPI v0.46.0
+Docker v19.03.5
+Python v3.8.1
+Pytest v5.3.2
+Databases v0.2.6
+
+I needed to update the databases repo to version 0.3.2 to be compatible with python 3.8.1
+
+also added 
+
+$ pip install databases[postgresql] for production/dev db
+$ pip install databases[sqlite] for testing db
