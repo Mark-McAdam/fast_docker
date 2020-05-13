@@ -1,6 +1,12 @@
 # fast_docker
 Fast api running in a docker container to upload to aws beanstalk 
 
+
+# TODO 
+# !!! Abstract out the application configuration to a separate file. !!!
+
+
+
 Specifically:
 my stretch goal for the weekend is to refamiliarize myself with AWS. I am going to do this by creating a fastapi app, running on uvicorn web server(like Mike was using), connected to a postgresql db, where I have route examples for Post Get Put Delete (CRUD), make sure I implement database.fetch_all(query) instead of fetch_one,  put everything into a docker-container and then upload to aws elastic beanstalk to test it out live.
 This is exciting puzzle week
@@ -39,3 +45,39 @@ So, when the container spins up, Uvicorn will run with the following settings:
 --host 0.0.0.0 defines the address to host the server on.
 --port 8000 defines the port to host the server on.
 app.main:app tells Uvicorn where it can find the FastAPI ASGI application -- e.g., "within the 'app' module, you'll find the ASGI app, app = FastAPI(), in the 'main.py' file.
+
+
+
+Looking for some more challenges?
+
+Review the official tutorial. It's long but well worth a read.
+https://fastapi.tiangolo.com/tutorial/
+
+
+Implement async background tasks, 
+https://fastapi.tiangolo.com/tutorial/background-tasks/
+
+database migrations, 
+https://fastapi.tiangolo.com/tutorial/sql-databases/#migrations
+
+and auth.
+https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/
+
+
+
+
+In a production environment, you'll probably want to stand up Gunicorn and let it manage Uvicorn. Review Running with Gunicorn 
+https://www.uvicorn.org/#running-with-gunicorn
+
+and the Deployment guide for more info. 
+https://fastapi.tiangolo.com/deployment/
+
+Check out the official uvicorn-gunicorn-fastapi Docker image as well.
+https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker
+
+
+
+
+You can find the source code in the fastapi-crud-async repo. Thanks for reading!
+https://github.com/testdrivenio/fastapi-crud-async
+
